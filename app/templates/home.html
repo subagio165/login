@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if current_user.is_authenticated %}
+	<h1>Selamat Datang {{current_user.username}}</h1>
+{% else %}
+	<h1>Selamat Datang</h1>
+{% endif %}
+
+{% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author.username }}</a>
+              <small class="text-muted">{{ post.tanggal.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('post', post_id=post.danger) }}">{{ post.judul }}</a></h2>
+            <p class="article-content">{{ post.isi }}</p>
+          </div>
+        </article>
+    {% endfor %}
+
+{% endblock %}

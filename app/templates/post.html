@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="article-metadata">
+	<a class="mr-2" href="#">{{ post.author.username }}</a>
+	<small class="text-muted">{{ post.tanggal.strftime('%Y-%m-%d') }}</small>
+	 <h2 class="article-title">{{ post.judul }}</h2>
+      <p class="article-content">{{ post.isi }}</p>
+</div>
+
+{% endblock %}

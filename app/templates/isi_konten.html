@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>isi konten</h1>
+
+<div class="content-section">
+	<form action="/new_post" method="POST">
+		{{form.hidden_tag()}}
+		<fieldset class="form-group">
+			<legend>Login</legend>
+			<div>
+				{{form.judul.label}}
+
+				{% if form.judul.errors %}
+					{{ form.judul }}
+                        <div class="invalid-feedback">
+                            {% for error in form.judul.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+				{% else %}
+					{{form.judul}}
+				{% endif %}
+			</div>
+			<div>
+				{{form.isi.label}}
+
+				{% if form.isi.errors %}
+					{{ form.isi }}
+                        <div class="invalid-feedback">
+                            {% for error in form.isi.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+				{% else %}
+					{{form.isi}}
+				{% endif %}
+			</div>
+		</fieldset>
+		<div class="form-group">
+			{{form.submit}}
+		</div>
+	</form>
+</div>
+
+
+{% endblock %}
